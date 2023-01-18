@@ -1,0 +1,53 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.aabushinov.bimContext</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>BimContext</name>
+
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="abushinov97@gmail.com" url="https://www.yourcompany.com">3eFiR4iK</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.plugins.terminal</depends>
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.aabushinov.bimcontext.ConfigurationState"/>
+        <applicationService serviceImplementation="com.aabushinov.bimcontext.Service.TerminalService"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.aabushinov.bimcontext.Configuration"
+                id="preference.Configuration"
+                displayName="Bim Context Settings"
+        />
+    </extensions>
+    <actions>
+        <group id="org.intellij.sdk.action.GroupedActions"
+               text="BIM Migrations"
+               popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.aabushinov.bimcontext.Action.GenerateAction"/>
+            <action
+                    id="com.aabushinov.bimcontext.Action.GenerateAction"
+                    class="com.aabushinov.bimcontext.Action.GenerateAction"
+                    text="Generate">
+            </action>
+        </group>
+
+    </actions>
+</idea-plugin>
