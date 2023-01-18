@@ -9,7 +9,7 @@
 
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="abushinov97@gmail.com" url="https://www.yourcompany.com">3eFiR4iK</vendor>
+    <vendor email="abushinov97@gmail.com" url="https://github.com/3eFiR4iK/BIM-Plugin">3eFiR4iK</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -34,7 +34,7 @@
                 parentId="tools"
                 instance="com.aabushinov.bimcontext.Configuration"
                 id="preference.Configuration"
-                displayName="Bim Context Settings"
+                displayName="BIM Plugin Settings"
         />
     </extensions>
     <actions>
@@ -46,6 +46,18 @@
                     id="com.aabushinov.bimcontext.Action.GenerateAction"
                     class="com.aabushinov.bimcontext.Action.GenerateAction"
                     text="Generate">
+            </action>
+            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.aabushinov.bimcontext.Action.UpAllAction"/>
+            <action
+                    id="com.aabushinov.bimcontext.Action.UpAllAction"
+                    class="com.aabushinov.bimcontext.Action.UpAllAction"
+                    text="Migration Up">
+            </action>
+            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="com.aabushinov.bimcontext.Action.ListAction"/>
+            <action
+                    id="com.aabushinov.bimcontext.Action.ListAction"
+                    class="com.aabushinov.bimcontext.Action.ListAction"
+                    text="List Migrations">
             </action>
         </group>
 
